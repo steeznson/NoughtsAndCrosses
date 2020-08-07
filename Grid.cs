@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game{
     class Grid{
@@ -24,6 +25,13 @@ namespace Game{
         }
         public void setRow2(List<string> newRow) {
             this.row2 = newRow;
+        }
+
+        public bool notFull() {
+            bool emptyCells0 = this.row0.Any(i => i == null);
+            bool emptyCells1 = this.row1.Any(i => i == null);
+            bool emptyCells2 = this.row2.Any(i => i == null);
+            return (emptyCells0 || emptyCells1 || emptyCells2);
         }
     }
 }
