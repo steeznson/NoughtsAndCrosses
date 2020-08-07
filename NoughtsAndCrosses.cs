@@ -18,6 +18,12 @@ namespace Game{
             NoughtsAndCrosses.printGrid(grid);
             
             while (grid.notFull()){
+                
+                if (grid.win()){
+                    Console.WriteLine("\n~~CONGRATULATIONS~~\n");
+                    Environment.Exit(0);
+                }
+                
                 Console.WriteLine("Enter coordinates and a value 'O' or 'X'");
                 Console.WriteLine("e.g. '0,1 X'");
 

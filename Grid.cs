@@ -15,6 +15,44 @@ namespace Game{
             return (emptyCells0 || emptyCells1 || emptyCells2);
         }
 
+        public bool win() {
+            bool leftDiagonal = this.leftDiagonal();
+            bool rightDiagonal = this.rightDiagonal();
+            bool horizontal = this.horizontal();
+            bool vertical = this.vertical();
+            return (leftDiagonal || rightDiagonal || horizontal || vertical);
+        }
+
+        public bool leftDiagonal(){
+            if (!(string.IsNullOrEmpty(this.row0[0]) ||
+                string.IsNullOrEmpty(this.row1[1]) ||
+                string.IsNullOrEmpty(this.row2[2]))) {
+                return (this.row0[0].Equals(this.row1[1]) && this.row1[1].Equals(this.row2[2]));
+            } else {
+                return false;
+            }
+        }
+
+        public bool rightDiagonal(){
+            if (!(string.IsNullOrEmpty(this.row0[2]) ||
+                string.IsNullOrEmpty(this.row1[1]) ||
+                string.IsNullOrEmpty(this.row2[0]))) {
+                return (this.row0[2].Equals(this.row1[1]) && this.row1[1].Equals(this.row2[0]));
+            } else {
+                return false;
+            }
+        }
+
+        // todo
+        public bool horizontal(){
+            return false;
+        }
+
+        // todo
+        public bool vertical(){
+            return false;
+        }
+
         public List<string> getRow0() {
             return this.row0;
         }
