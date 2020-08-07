@@ -33,19 +33,27 @@ namespace Game{
                 int yCoord = int.Parse(splits[1].Split(' ')[0]);
                 string noughtOrCross = splits[1].Split(' ')[1];
 
+                /*TODO abstract this functionality to avoid repetition
+                  getProperty() using string 'rowX'? */
                 if (xCoord < 3){
                     if (yCoord == 0){
                         List<string> newRow = grid.getRow0();
-                        newRow[xCoord] = noughtOrCross;
-                        grid.setRow0(newRow);
+                        if (newRow[xCoord] == null){
+                            newRow[xCoord] = noughtOrCross;
+                            grid.setRow0(newRow);
+                        }
                     } else if (yCoord == 1){
                         List<string> newRow = grid.getRow1();
-                        newRow[xCoord] = noughtOrCross;
-                        grid.setRow1(newRow);
+                        if (newRow[xCoord] == null){
+                            newRow[xCoord] = noughtOrCross;
+                            grid.setRow1(newRow);
+                        }
                     } else if (yCoord == 2){
                         List<string> newRow = grid.getRow2();
-                        newRow[xCoord] = noughtOrCross;
-                        grid.setRow2(newRow);
+                        if (newRow[xCoord] == null){
+                            newRow[xCoord] = noughtOrCross;
+                            grid.setRow2(newRow);
+                        }
                     }
                 }
                 NoughtsAndCrosses.printGrid(grid);
