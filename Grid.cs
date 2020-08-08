@@ -88,6 +88,12 @@ namespace Game{
             
         }
 
+        public void print(){
+            Console.WriteLine(String.Join(", ", this.getRow0()));
+            Console.WriteLine(String.Join(", ", this.getRow1()));
+            Console.WriteLine(String.Join(", ", this.getRow2()));
+        }
+
         public List<string> getRow0() {
             return this.row0;
         }
