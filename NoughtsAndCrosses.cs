@@ -15,6 +15,13 @@ namespace Game{
             grid.setRow2(new List<string>(new string[] {null, null, null}));
             
             while (grid.notFull()){
+                // exit if win state
+                if (grid.win()){
+                    grid.print();
+                    Console.WriteLine("\n~~GAME OVER~~\n");
+                    Environment.Exit(0);
+                }
+
 // The CPU takes the first go if enabled
 #if CPU
                 var rand = new Random();
@@ -52,12 +59,6 @@ namespace Game{
 #endif
 
                 grid.print();
-
-                if (grid.win()){
-                    Console.WriteLine("\n~~GAME OVER~~\n");
-                    Environment.Exit(0);
-                }
-                
                 Console.WriteLine("\nEnter coordinates and a value 'O' or 'X'");
                 Console.WriteLine("e.g. '0,1 X'");
 
