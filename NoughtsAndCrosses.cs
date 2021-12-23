@@ -72,7 +72,7 @@ namespace Game{
                 string[] splits = input.Split(',');
                 int xCoord = int.Parse(splits[0]);
                 int yCoord = int.Parse(splits[1].Split(' ')[0]);
-                string noughtOrCross = splits[1].Split(' ')[1];
+                string noughtOrCross = splits[1].Split(' ')[1].ToUpper();
 
 
                 if (xCoord < 3){
