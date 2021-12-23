@@ -10,9 +10,9 @@ namespace Game{
                                       RegexOptions.Compiled |
                                       RegexOptions.IgnoreCase);
             Grid grid = new Grid();
-            grid.setRow0(new List<string>(new string[] {null, null, null}));
-            grid.setRow1(new List<string>(new string[] {null, null, null}));
-            grid.setRow2(new List<string>(new string[] {null, null, null}));
+            grid.setRow(new List<string>(new string[] {null, null, null}), 0);
+            grid.setRow(new List<string>(new string[] {null, null, null}), 1);
+            grid.setRow(new List<string>(new string[] {null, null, null}), 2);
             
             while (grid.notFull()){
                 // exit if win state
@@ -34,7 +34,7 @@ namespace Game{
                             List<string> cpuRow0 = grid.getRow0();
                             if (cpuRow0[cpuXCoord] == null){
                                 cpuRow0[cpuXCoord] = "O";
-                                grid.setRow0(cpuRow0);
+                                grid.setRow(cpuRow0, 0);
                                 searching = false;
                             }
                             break;
@@ -42,7 +42,7 @@ namespace Game{
                             List<string> cpuRow1 = grid.getRow1();
                             if (cpuRow1[cpuXCoord] == null){
                                 cpuRow1[cpuXCoord] = "O";
-                                grid.setRow1(cpuRow1);
+                                grid.setRow(cpuRow1, 1);
                                 searching = false;
                             }
                             break;
@@ -50,7 +50,7 @@ namespace Game{
                             List<string> cpuRow2 = grid.getRow2();
                             if (cpuRow2[cpuXCoord] == null){
                                 cpuRow2[cpuXCoord] = "O";
-                                grid.setRow2(cpuRow2);
+                                grid.setRow(cpuRow2, 2);
                                 searching = false;
                             }
                             break;
@@ -74,26 +74,25 @@ namespace Game{
                 int yCoord = int.Parse(splits[1].Split(' ')[0]);
                 string noughtOrCross = splits[1].Split(' ')[1];
 
-                /*TODO abstract this functionality to avoid repetition
-                  getProperty() using string 'rowX'? */
+
                 if (xCoord < 3){
                     if (yCoord == 0){
                         List<string> newRow = grid.getRow0();
                         if (newRow[xCoord] == null){
                             newRow[xCoord] = noughtOrCross;
-                            grid.setRow0(newRow);
+                            grid.setRow(newRow, 0);
                         }
                     } else if (yCoord == 1){
                         List<string> newRow = grid.getRow1();
                         if (newRow[xCoord] == null){
                             newRow[xCoord] = noughtOrCross;
-                            grid.setRow1(newRow);
+                            grid.setRow(newRow, 1);
                         }
                     } else if (yCoord == 2){
                         List<string> newRow = grid.getRow2();
                         if (newRow[xCoord] == null){
                             newRow[xCoord] = noughtOrCross;
-                            grid.setRow2(newRow);
+                            grid.setRow(newRow, 2);
                         }
                     }
                 }

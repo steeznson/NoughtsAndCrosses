@@ -95,20 +95,26 @@ namespace Game{
         public List<string> getRow0() {
             return this.row0;
         }
-        public void setRow0(List<string> newRow) {
-            this.row0 = newRow;
-        }
+
         public List<string> getRow1() {
             return this.row1;
-        }
-        public void setRow1(List<string> newRow) {
-            this.row1 = newRow;
         }
         public List<string> getRow2() {
             return this.row2;
         }
-        public void setRow2(List<string> newRow) {
-            this.row2 = newRow;
+
+        public void setRow(List<string> newRow, int rowIndex){
+            switch (rowIndex){
+                case 0:
+                    this.row0 = newRow;
+                    break;
+                case 1:
+                    this.row1 = newRow;
+                    break;
+                case 2:
+                    this.row2 = newRow;
+                    break;
+            }
         }
     }
 }
