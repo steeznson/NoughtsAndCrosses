@@ -45,44 +45,42 @@ namespace Game{
             }
         }
 
+        private bool rowIsComplete(List<string> row){
+            if (!(string.IsNullOrEmpty(row[0]) ||
+                string.IsNullOrEmpty(row[1]) ||
+                string.IsNullOrEmpty(row[2]))) {
+                    return (row[0].Equals(row[1]) &&
+                            row[1].Equals(row[2]));
+                }
+            return false;
+        }
+
         public bool horizontal(){
             bool completeRow = false;
-            if (!(string.IsNullOrEmpty(this.row0[0]) ||
-                string.IsNullOrEmpty(this.row0[1]) ||
-                string.IsNullOrEmpty(this.row0[2]))) {
-                completeRow = (this.row0[0].Equals(this.row0[1]) &&
-                               this.row0[1].Equals(this.row0[2]));
-            } else if (!(string.IsNullOrEmpty(this.row1[0]) ||
-                string.IsNullOrEmpty(this.row1[1]) ||
-                string.IsNullOrEmpty(this.row1[2]))) {
-                completeRow = (this.row1[0].Equals(this.row1[1]) &&
-                               this.row1[1].Equals(this.row1[2]));
-            } else if (!(string.IsNullOrEmpty(this.row2[0]) ||
-                string.IsNullOrEmpty(this.row2[1]) ||
-                string.IsNullOrEmpty(this.row2[2]))) {
-                completeRow = (this.row2[0].Equals(this.row2[1]) &&
-                               this.row2[1].Equals(this.row2[2]));
+            if(this.rowIsComplete(row0) ||
+                this.rowIsComplete(row1) ||
+                this.rowIsComplete(row2)){
+                completeRow = true;
             }
             return completeRow;
         }
 
+        private bool columnIsComplete(int index){
+            if (!(string.IsNullOrEmpty(this.row0[index]) ||
+                string.IsNullOrEmpty(this.row1[index]) ||
+                string.IsNullOrEmpty(this.row2[index]))) {
+                    return (this.row0[index].Equals(this.row1[index]) &&
+                            this.row1[index].Equals(this.row2[index]));
+                }
+            return false;
+        }
+
         public bool vertical(){
             bool completeColumn = false;
-            if (!(string.IsNullOrEmpty(this.row0[0]) ||
-                  string.IsNullOrEmpty(this.row1[0]) ||
-                  string.IsNullOrEmpty(this.row2[0]))) {
-                completeColumn = (this.row0[0].Equals(this.row1[0]) &&
-                                  this.row1[0].Equals(this.row2[0]));
-            } else if (!(string.IsNullOrEmpty(this.row0[1]) ||
-                         string.IsNullOrEmpty(this.row1[1]) ||
-                         string.IsNullOrEmpty(this.row2[1]))) {
-                completeColumn = (this.row0[1].Equals(this.row1[1]) &&
-                                  this.row1[1].Equals(this.row2[1]));
-            } else if (!(string.IsNullOrEmpty(this.row0[2]) ||
-                         string.IsNullOrEmpty(this.row1[2]) ||
-                         string.IsNullOrEmpty(this.row2[2]))) {
-                completeColumn = (this.row0[2].Equals(this.row1[2]) &&
-                                  this.row1[2].Equals(this.row2[2]));
+            if(this.columnIsComplete(0) ||
+                this.columnIsComplete(1) ||
+                this.columnIsComplete(2)){
+                completeColumn = true;
             }
             return completeColumn;
             
