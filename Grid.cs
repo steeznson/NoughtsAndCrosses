@@ -87,9 +87,34 @@ namespace Game{
         }
 
         public void print(){
-            Console.WriteLine(String.Join(", ", this.getRow0()));
-            Console.WriteLine(String.Join(", ", this.getRow1()));
-            Console.WriteLine(String.Join(", ", this.getRow2()));
+            // create the initial string
+            string out0 = String.Join("|", this.getRow0());
+            string out1 = String.Join("|", this.getRow1());
+            string out2 = String.Join("|", this.getRow2());
+
+            // manipulate the string
+            char pipe = '|';
+            if (out0[0] == pipe){
+                out0 = " " + out0;
+            }
+            if (out1[0] == pipe){
+                out1 = " " + out1;
+            }
+            if (out2[0] == pipe){
+                out2 = " " + out2;
+            }
+
+            out0 = out0.Replace("||", "| |");
+            out1 = out1.Replace("||", "| |");
+            out2 = out2.Replace("||", "| |");
+
+            // print the stings
+            Console.WriteLine("");
+            Console.WriteLine(out0);
+            Console.WriteLine(out1);
+            Console.WriteLine(out2);
+            Console.WriteLine("");
+
         }
 
         public List<string> getRow0() {
